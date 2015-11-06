@@ -1,0 +1,39 @@
+#{extends 'admin.html' /}   
+
+<div id="main">
+
+    <ul id="adminMenu">
+        <li class="${request.controller == 'Admin' ? 'selected' : ''}">
+            <a href="@{Admin.index()}">My posts</a>
+        </li>
+        #{secure.check 'admin'}
+        <li class="${request.controller == 'Posts' ? 'selected' : ''}">
+            <a href="@{Posts.list()}">Posts</a>
+        </li>
+        <li class="${request.controller == 'Tags' ? 'selected' : ''}">
+            <a href="@{Tags.list()}">Tags</a>
+        </li>
+        <li class="${request.controller == 'Comments' ? 'selected' : ''}">
+            <a href="@{Comments.list()}">Comments</a>
+        </li>
+        <li class="${request.controller == 'Users' ? 'selected' : ''}">
+            <a href="@{Users.list()}">Users</a>
+        </li>
+        #{/secure.check}
+    </ul>
+    <h3>Welcome ${user}, <span>you have written ${posts.size() ?: 'no'} ${posts.pluralize('post', 'posts')} so far</span></h3>
+
+    #{list items:posts, as:'post'}
+    <p class="post ${post_parity}">
+        <a href="@{Admin.form(post.id)}">${post.title}</a>
+    </p>
+    #{/list}
+
+    <p id="newPost" >
+        <a href="@{form()}"><span>+</span> write a new post</a>
+    </p>
+
+
+
+</div>
+
