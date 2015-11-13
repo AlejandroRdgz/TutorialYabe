@@ -39,8 +39,7 @@ public class Post extends Model {
     public String content;
 
     @Required
-    //@ManyToOne
-    public User author;
+    public String authorEmail;
     
     
 
@@ -60,13 +59,18 @@ public class Post extends Model {
     public Post(User author, String title, String content) {
         this.comments = new ArrayList<Comment>();
         this.tags = new TreeSet();
-        this.author = author;
+        this.authorEmail = author.email;
         this.title = title;
         this.content = content;
         this.postedAt = new Date();
-
     }
-
+    
+    public User getAuthor() {
+        
+        return User.q("email", authorEmail).get();
+    }
+    
+    
     public Post addComment(String author, String content) {
 //        Comment newComment = new Comment(this, author, content).save();
 //        this.comments.add(newComment);

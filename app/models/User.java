@@ -12,7 +12,7 @@ import play.data.validation.Email;
 import play.data.validation.Required;
 import com.google.code.morphia.annotations.Entity;
 import play.modules.morphia.Model;
-
+import org.bson.types.ObjectId;
 
 /**
  *

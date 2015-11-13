@@ -2,13 +2,13 @@
 
 
 User(bob):
-    eMail:          bob@gmail.com
+    email:          bob@gmail.com
     password:       secret
     fullName:       Bob
     isAdmin:        true
     
 User(jeff):
-    eMail:          jeff@gmail.com
+    email:          jeff@gmail.com
     password:       secret
     fullName:       Jeff   
     

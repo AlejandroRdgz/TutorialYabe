@@ -24,7 +24,6 @@ public class Admin extends Controller {
     static void setConnectedUser() {
         if (Security.isConnected()) {
             User user = User.find("byEmail", Security.connected()).first();
-
             renderArgs.put("user", user.fullName);
 
         }

@@ -1,18 +1,15 @@
 #{extends 'main.html' /}
 #{set title:post.title /}
+
 <ul id="pagination">
     #{if post.previous()}
     <li id="previous">
-        <a href="@{Application.show(post.previous().id)}">
-            ${post.previous().title}
-        </a>
+        <a href="@{Application.show(post.previous().id)}">${post.previous().title}</a>
     </li>
     #{/if}
     #{if post.next()}
     <li id="next">
-        <a href="@{Application.show(post.next().id)}">
-            ${post.next().title}
-        </a>
+        <a href="@{Application.show(post.next().id)}">${post.next().title}</a>
     </li>
     #{/if}
 </ul>
@@ -23,44 +20,37 @@
 
 #{display post:post, as:'full' /}
 
-<h3>Escribiendo un comentario</h3>
+<h3>Post a comment</h3>
 
 #{form @Application.postComment(post.id)}
-#{ifErrors}
-<p class="error">
-    All fields are required!
-</p>
-#{/ifErrors}
 
-<p>
-    <label for="author">Your name: </label>
-    <input type="text" name="author" id="author" value="${params.author}" />
-</p>
-<p>
-    <label for="content">Your message: </label>
-    <textarea name="content" id="content">${params.content}</textarea>
-</p>
-
-#{ifErrors}
+    #{ifErrors}
     <p class="error">
         ${errors[0]}
     </p>
-#{/ifErrors}
-<p>
-    <label for="code">Please type the code below: </label>
-    <img src="@{Application.captcha(randomID)}" />
-    <br />
-    <input type="text" name="code" id="code" size="18" value="" />
-    <input type="hidden" name="randomID" value="${randomID}" />
-</p>
+    #{/ifErrors}
 
-
-<p>
-    <input type="submit" value="Submit your comment" />
-</p>
+    <p>
+        <label for="author">Your name: </label>
+        <input type="text" name="author" id="author" value="${params.author}" />
+    </p>
+    <p>
+        <label for="content">Your message: </label>
+        <textarea name="content" id="content">${params.content}</textarea>
+    </p>
+    <p>
+        <label for="code">Please type the code below: </label>
+        <img src="@{Application.captcha(randomID)}" />
+        <br />
+        <input type="text" name="code" id="code" size="18" value="" />
+        <input type="hidden" name="randomID" value="${randomID}" />
+    </p>
+    <p>
+        <input type="submit" value="Submit your comment" />
+    </p>
 #{/form}
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript" charset="${_response_encoding}">
     $(function() {         
         // Expose the form 
         $('form').click(function() { 

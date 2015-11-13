@@ -1,9 +1,10 @@
-11 nov 2015 18:15:50,310 INFO  ~ Starting /home/alejandro/Documentos/Desarrollo/Tutorial/yabe
-11 nov 2015 18:15:51,499 INFO  ~ Module crud is available (/home/alejandro/Documentos/play-1.3.1/modules/crud)
-11 nov 2015 18:15:51,506 INFO  ~ Module secure is available (/home/alejandro/Documentos/play-1.3.1/modules/secure)
-11 nov 2015 18:15:54,214 WARN  ~ You're running Play! in DEV mode
-11 nov 2015 18:15:54,411 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
-11 nov 2015 18:16:24,897 ERROR ~ Unable to set localhost. This prevents creation of a GUID. Cause was: Alejandro: Alejandro: unknown error
+12 nov 2015 20:35:35,641 INFO  ~ Starting /home/alejandro/Documentos/Desarrollo/Tutorial/yabe
+12 nov 2015 20:35:36,811 INFO  ~ Module crud is available (/home/alejandro/Documentos/play-1.3.1/modules/crud)
+12 nov 2015 20:35:36,818 INFO  ~ Module secure is available (/home/alejandro/Documentos/play-1.3.1/modules/secure)
+12 nov 2015 20:35:36,818 INFO  ~ Module morphia is available (/home/alejandro/Documentos/Desarrollo/Tutorial/yabe/modules/morphia-1.2.12)
+12 nov 2015 20:35:39,071 WARN  ~ You're running Play! in DEV mode
+12 nov 2015 20:35:39,230 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+12 nov 2015 20:36:04,819 ERROR ~ Unable to set localhost. This prevents creation of a GUID. Cause was: Alejandro: Alejandro: unknown error
 java.net.UnknownHostException: Alejandro: Alejandro: unknown error
 	at java.net.InetAddress.getLocalHost(InetAddress.java:1505)
 	at net.sf.ehcache.Cache.<clinit>(Cache.java:214)
@@ -38,23 +39,6 @@ Caused by: java.net.UnknownHostException: Alejandro: unknown error
 	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323)
 	at java.net.InetAddress.getLocalHost(InetAddress.java:1500)
 	... 26 more
-11 nov 2015 18:16:27,896 INFO  ~ Connected to jdbc:h2:mem:play;MODE=MYSQL;LOCK_MODE=0 for default
-11 nov 2015 18:16:33,857 ERROR ~ HHH000389: Unsuccessful: alter table Comment drop constraint FK_apirq8ka64iidc18f3k6x5tc5
-11 nov 2015 18:16:33,861 ERROR ~ Tabla "COMMENT" no encontrada
-Table "COMMENT" not found; SQL statement:
-alter table Comment drop constraint FK_apirq8ka64iidc18f3k6x5tc5 [42102-185]
-11 nov 2015 18:16:33,861 ERROR ~ HHH000389: Unsuccessful: alter table Post drop constraint FK_m7j5gwmpa7dklv5bnc41ertmi
-11 nov 2015 18:16:33,861 ERROR ~ Tabla "POST" no encontrada
-Table "POST" not found; SQL statement:
-alter table Post drop constraint FK_m7j5gwmpa7dklv5bnc41ertmi [42102-185]
-11 nov 2015 18:16:33,869 ERROR ~ HHH000389: Unsuccessful: alter table Post_Tag drop constraint FK_t0ml4xx4nhnqjwrhxugwlvrpm
-11 nov 2015 18:16:33,870 ERROR ~ Tabla "POST_TAG" no encontrada
-Table "POST_TAG" not found; SQL statement:
-alter table Post_Tag drop constraint FK_t0ml4xx4nhnqjwrhxugwlvrpm [42102-185]
-11 nov 2015 18:16:33,870 ERROR ~ HHH000389: Unsuccessful: alter table Post_Tag drop constraint FK_ex1oknil4le2tootduvjnllp6
-11 nov 2015 18:16:33,871 ERROR ~ Tabla "POST_TAG" no encontrada
-Table "POST_TAG" not found; SQL statement:
-alter table Post_Tag drop constraint FK_ex1oknil4le2tootduvjnllp6 [42102-185]
-11 nov 2015 18:16:34,527 INFO  ~ Application 'yabe' is now started !
-11 nov 2015 18:23:02,567 WARN  ~ [DEPRECATION] Encountered positional parameter near line 1, column 35.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
-11 nov 2015 18:23:02,616 WARN  ~ [DEPRECATION] Encountered positional parameter near line 1, column 35.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+12 nov 2015 20:36:07,516 INFO  ~ Connected to jdbc:h2:mem:play;MODE=MYSQL;LOCK_MODE=0 for default
+12 nov 2015 20:36:12,467 INFO  ~ MorphiaPlugin-1.2.12> initialized
+12 nov 2015 20:36:12,494 INFO  ~ Application 'yabe' is now started !

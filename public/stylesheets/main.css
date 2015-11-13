@@ -1,7 +1,7 @@
 /** Main layout **/
 
 html, body {
-    background: #364B66 !important;
+    background: #DDDFDF !important;
     font-family: Helvetica, Arial, Sans !important;
 }
 
@@ -22,7 +22,7 @@ body {
     display: block;
     height: 49px;
     margin-left: 20px;
-    color: #fff;
+    color: #C5BBBB;
     font-size: 48px;
     font-weight: bold;
     letter-spacing: -4px;
@@ -30,7 +30,7 @@ body {
 }
 
 #logo span {
-    color: #f00;
+    color: #000;
     font-size: 70%;
 }
 
@@ -45,18 +45,18 @@ body {
 }
 
 #tools a {
-    color: #fff;
+    color: #0000;
     text-decoration: none;
 }
 
 #title {
-    background: #B8C569;
+    background: #44C3ED;
     padding: 20px 30px 30px 20px;
     margin: 20px 0;
-    color: #3C4313;
+    color: #15617A;
     position: relative;
     -webkit-border-radius: 16px;
-    -webkit-box-shadow: 0 2px 0 #93A045;
+    -webkit-box-shadow: 0 2px 0 #44C3ED;
     -moz-border-radius: 16px;
 }
 
@@ -66,9 +66,9 @@ body {
     display: block;
     width: 0; 
     height: 0; 
-	border-left: 10px solid transparent; 
-	border-right: 10px solid transparent;
-	border-bottom: 10px solid #BAC36E;
+	border-left: 20px solid transparent; 
+	border-right: 20px solid transparent;
+	border-bottom: 20px solid #44C3ED;
 	border-top: 0;
 	position: absolute;
 	top: -10px;
@@ -94,8 +94,8 @@ body {
 /** Main content **/
 
 #main {
-    background: #314660;
-    background: -webkit-gradient(linear, left top, left 30%, from(#314660), to(#364B66));
+    background: #47668B;
+    background: -webkit-gradient(linear, left top, left 30%, from(#47668B), to(#364B66));
     -webkit-border-radius: 16px;
     -moz-border-radius: 16px;
     padding: 20px;
@@ -109,12 +109,12 @@ body {
 
 .post .post-title a {
     font-size: 36px;
-    color: #F5C2CC;
+    color: #000000;
     text-decoration: none;
 }
 
 .post .post-metadata {
-    color: #BAC36E;
+    color: #96D0E9;
     display: block;
     font-size: 70%;
     display: inline-block;
