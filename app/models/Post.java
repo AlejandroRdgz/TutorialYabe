@@ -13,13 +13,18 @@ import java.util.TreeSet;
 import javax.persistence.*;
 import play.data.validation.MaxSize;
 import play.data.validation.Required;
-import play.db.jpa.Model;
+import play.modules.morphia.Model;
+import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Embedded;
+import com.google.code.morphia.annotations.Reference;
+import java.util.HashSet;
 
 /**
  *
  * @author alejandro
  */
 @Entity
+//@Embedded
 public class Post extends Model {
 
     @Required
@@ -30,12 +35,14 @@ public class Post extends Model {
 
     @Lob
     @Required
-    @MaxSize(10000)
+    @MaxSize(10000)    
     public String content;
 
     @Required
-    @ManyToOne
+    //@ManyToOne
     public User author;
+    
+    
 
     /*public Post(User author, String title, String content) {
      this.author = author;
@@ -43,15 +50,16 @@ public class Post extends Model {
      this.content = content;
      this.postedAt = new Date();
      }*/
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+  //  @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    @Reference
     public List<Comment> comments;
     
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    public Set<Tag> tags;
+   // @ManyToMany(cascade = CascadeType.PERSIST)
+    public Set<String> tags = new HashSet<String>();
     
     public Post(User author, String title, String content) {
         this.comments = new ArrayList<Comment>();
-        this.tags = new TreeSet<Tag>();
+        this.tags = new TreeSet();
         this.author = author;
         this.title = title;
         this.content = content;
@@ -60,35 +68,48 @@ public class Post extends Model {
     }
 
     public Post addComment(String author, String content) {
-        Comment newComment = new Comment(this, author, content).save();
-        this.comments.add(newComment);
-        this.save();
+//        Comment newComment = new Comment(this, author, content).save();
+//        this.comments.add(newComment);
+//        this.save();
+        
+        new Comment(this, author, content).save();
+        
         return this;
     }
 
     public Post previous() {
-        return Post.find("postedAt < ? order by postedAt desc", postedAt)
-                .first();
+        return Post.q().filter("postedAt <", postedAt).
+                order("-postedAt").first();
     }
 
     public Post next() {
-        return Post.find("postedAt > ? order by postedAt asc", postedAt)
-                .first();
+        return Post.q().filter("postedAt >", postedAt).
+                order("postedAt").first();
     }
     
     public Post tagItWith(String name){
-        tags.add(Tag.findOrCreateByName(name));
+        tags.add(name);
         return(this);
     }
     
     public static List<Post> findTaggedWith(String... tags){
-        return Post.find(
-                "select distinct p from Post p join p.tags as t where t.name in (:tags) group by p.id, p.author, p.title, p.content,p.postedAt having count(t.id) = :size"
-                ).bind("tags", tags).bind("size", tags.length).fetch();
+//        return Post.find(
+//                "select distinct p from Post p join p.tags as t where t.name in (:tags) group by p.id, p.author, p.title, p.content,p.postedAt having count(t.id) = :size"
+//                ).bind("tags", tags).bind("size", tags.length).fetch();
+        
+        return Post.q().filter("tags all", tags).asList();
     }
     
     
+    public String toString() {
+        return title;
+    }
     
+    @OnDelete void cascadeDelete() {
+        for (Comment c: comments) {
+            c.delete();
+        }
+    }
     
 
 }

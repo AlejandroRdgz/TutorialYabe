@@ -31,8 +31,7 @@ public class Admin extends Controller {
     }
 
     public static void index() {
-        String user = Security.connected();
-        List<Post> posts = Post.find("author.eMail", user).fetch();
+        List<Post> posts = Post.find("authorEmail", Security.connected()).asList();
         render(posts);
     }
 
@@ -61,7 +60,7 @@ public class Admin extends Controller {
         // Set tags list
         for (String tag : tags.split("\\s+")) {
             if (tag.trim().length() > 0) {
-                post.tags.add(Tag.findOrCreateByName(tag));
+                post.tagItWith(tag);
             }
         }
         // Validate

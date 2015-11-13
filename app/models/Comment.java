@@ -5,13 +5,13 @@
  */
 package models;
 
+import com.google.code.morphia.annotations.Entity;
 import java.util.Date;
-import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import play.data.validation.MaxSize;
 import play.data.validation.Required;
-import play.db.jpa.Model;
+import play.modules.morphia.Model;
 
 /**
  *
@@ -45,7 +45,16 @@ public class Comment extends Model{
     
     }
     
+    public String toString() {
+        return content.length() > 50 ? content.substring(0, 50) + "..." : content;
+    }
     
+    @Added void cascadeAdd() {
+        if (!post.comments.contains(this)) {
+            post.comments.add(this);
+            post.save();
+        }
+    }
     
     
    
