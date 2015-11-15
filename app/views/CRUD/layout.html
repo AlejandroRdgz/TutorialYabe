@@ -10,15 +10,18 @@
     	<div class="crudFlash flashSuccess">
     		${flash.success}
     	</div>
+    
     #{/if}
     #{if flash.error || error}
     	<div class="crudFlash flashError">
     		${error ?: flash.error}
     	</div>
+    
     #{/if}
  
     <div id="crudContent">
     	#{doLayout /}
+        <hr>
     </div>
  
 </div>
